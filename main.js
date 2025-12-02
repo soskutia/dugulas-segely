@@ -6,18 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenu = document.getElementById("mobileMenu");
 
   if (navToggle && mobileMenu) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("hidden");
+    const setMenuState = (open) => {
+      mobileMenu.classList.toggle("hidden", !open);
       if (navIcon) {
-        navIcon.textContent = isOpen ? "✕" : "☰";
+        navIcon.textContent = open ? "\u2715" : "\u2630";
       }
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    setMenuState(false);
+
+    navToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      setMenuState(!isOpen);
     });
 
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        if (navIcon) navIcon.textContent = "☰";
+        setMenuState(false);
       });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (
+        !mobileMenu.classList.contains("hidden") &&
+        !mobileMenu.contains(target) &&
+        !navToggle.contains(target)
+      ) {
+        setMenuState(false);
+      }
     });
   }
 
