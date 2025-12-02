@@ -1,61 +1,100 @@
-/* Alap beállítások */
+/* ============================
+   Alap beállítások & animációk
+   ============================ */
+
+:root {
+    /* Színpaletta – igazodik a Tailwind slate/teal világához */
+    --bg-body: #020617;
+    /* háttér (slate-950) */
+    --bg-surface: #020617;
+    --bg-elevated: #020617;
+    --border-subtle: rgba(148, 163, 184, 0.2);
+    /* slate-400/opacity */
+    --accent: #14b8a6;
+    /* teal-500 */
+    --accent-soft: rgba(20, 184, 166, 0.16);
+    --accent-strong: #0d9488;
+    /* teal-600 */
+    --text-main: #e5e7eb;
+    /* slate-200 */
+    --text-muted: #9ca3af;
+    /* slate-400 */
+    --text-strong: #f9fafb;
+    /* slate-50 */
+    --danger: #f97316;
+    /* orange-500 */
+    --success: #4ade80;
+    /* green-400 */
+}
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  opacity: 0;
-  animation: fadeIn 0.6s ease-out forwards;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
 }
 
 /* Oldal fade-in */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* 📞 Telefon badge animáció */
+/* ============================
+   Header / nav
+   ============================ */
+
+.header-shadow {
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+/* ============================
+   Call badge – telefon gomb
+   ============================ */
+
 .call-badge {
-  position: relative;
-  animation: callPulse 2s ease-in-out infinite;
-  box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.6);
-  transform-origin: center;
+    position: relative;
+    animation: callPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.6);
+    transform-origin: center;
 }
 
 @keyframes callPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.6);
-  }
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 0 10px rgba(45, 212, 191, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0);
-  }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.6);
+    }
+
+    50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+    }
 }
 
-/* Header árnyék scrollnál */
-.header-shadow {
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
-}
-
-/* Akinek csökkentett animáció van beállítva, annál ne villogjon minden */
+/* Csökkentett mozgás támogatása */
 @media (prefers-reduced-motion: reduce) {
-  body {
-    animation: none;
-  }
+    body {
+        animation: none;
+    }
 
-  .call-badge {
-    animation: none;
-    box-shadow: none;
-  }
+    .call-badge {
+        animation: none;
+        box-shadow: none;
+    }
 }
