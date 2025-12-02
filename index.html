@@ -2,418 +2,512 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Duguláselhárítás Budapest 0–24 | WC, mosogató, lefolyó – Dugulás Segély</title>
-<meta name="description" content="Duguláselhárítás Budapesten 0–24 – WC, mosogató, lefolyó és csatorna dugulások gyors elhárítása gépi duguláselhárítással. Kiemelten: XIX. kerület (Kispest) és több budapesti kerület.">
-  <link rel="stylesheet" href="style.css" />
-  <!-- Ikonokhoz: Font Awesome CDN (opcionális, de praktikus) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <title>Duguláselhárítás Budapesten 0–24 – gyors, tiszta, korrekt árakon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Gyors és tiszta duguláselhárítás Budapesten, 0–24 elérhetőséggel. WC, mosogató, csatorna duguláselhárítás korrekt, előre egyeztetett árakon, rejtett költségek nélkül.">
+
+  <!-- Tailwind CDN – prototípushoz oké, éleshez érdemes buildelni és purge-ölni -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Saját stílusok -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header class="top-bar">
-    <div class="top-bar__inner">
-      <span class="top-bar__icon">🚨</span>
-      <span class="top-bar__text">Sürgős duguláselhárítás? <br>Hívj most: <a href="tel:+36301234567">+36 30 123 4567</a></span>
+<body class="bg-slate-950 text-slate-50">
+
+  <!-- FIX NAV -->
+  <header id="siteHeader" class="fixed top-0 inset-x-0 z-50 bg-slate-950/90 border-b border-slate-800 backdrop-blur transition-shadow">
+    <div class="max-w-5xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
+
+      <!-- LOGO + BRAND -->
+      <a href="#hero" class="flex items-center gap-2 shrink-0">
+        <div class="h-7 w-7 rounded-full bg-teal-500 text-slate-950 flex items-center justify-center text-xs font-bold">
+          DS
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="font-semibold text-sm">Dugulás Segély</span>
+          <span class="text-[10px] text-slate-400 -mt-0.5">Duguláselhárítás 0-24</span>
+        </div>
+      </a>
+
+      <!-- TELEFON BADGE – mindig látszik -->
+      <a href="tel:+3612345678"
+         class="call-badge inline-flex items-center justify-center gap-1 rounded-full bg-teal-500 text-slate-950 text-xs font-semibold px-3 py-1.5 shadow-md shadow-teal-500/30 hover:bg-teal-400 transition shrink-0">
+        <span class="text-base leading-none">📞</span>
+        <span class="hidden sm:inline">+3612345678</span>
+      </a>
+
+      <!-- HAMBURGER (MOBIL) -->
+      <button id="navToggle"
+              class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-slate-700 text-slate-200 hover:border-teal-400 hover:text-teal-300 transition shrink-0"
+              aria-label="Menü megnyitása">
+        <span id="navIcon" class="text-lg">☰</span>
+      </button>
+
+      <!-- NAV (DESKTOP) -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300 ml-4">
+        <a href="#szolgaltatasok" class="hover:text-teal-300 transition">Szolgáltatások</a>
+        <a href="#folyamat" class="hover:text-teal-300 transition">Folyamat</a>
+        <a href="#terulet" class="hover:text-teal-300 transition">Területek</a>
+        <a href="#velemenyek" class="hover:text-teal-300 transition">Vélemények</a>
+        <a href="#ajanlat" class="hover:text-teal-300 transition">Kapcsolat</a>
+      </nav>
     </div>
-    <div class="top-bar__pulse"></div>
+
+    <!-- MOBIL MENÜ -->
+    <nav id="mobileMenu" class="md:hidden hidden border-t border-slate-800 bg-slate-950">
+      <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm font-medium text-slate-200">
+        <a href="#szolgaltatasok" class="py-1 hover:text-teal-300 transition">Szolgáltatások</a>
+        <a href="#folyamat" class="py-1 hover:text-teal-300 transition">Hogyan dolgozunk?</a>
+        <a href="#terulet" class="py-1 hover:text-teal-300 transition">Szolgáltatási terület</a>
+        <a href="#velemenyek" class="py-1 hover:text-teal-300 transition">Vélemények</a>
+        <a href="#ajanlat" class="py-1 hover:text-teal-300 transition">Kapcsolat</a>
+      </div>
+    </nav>
   </header>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <div class="nav__logo">
-        <span class="nav__logo-icon">💧</span>
-        <span class="nav__logo-text">dugulas-segely.hu</span>
-      </div>
-      <button class="nav__toggle" aria-label="Menü megnyitása">
-        <span></span><span></span>
-      </button>
-      <ul class="nav__links">
-        <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
-        <li><a href="#miert-mi">Miért mi?</a></li>
-        <li><a href="#folyamat">Hogyan dolgozunk?</a></li>
-        <li><a href="#gyik">GYIK</a></li>
-        <li><a href="#kapcsolat" class="nav__cta">Kérj visszahívást</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- TARTALOM -->
+  <main class="pt-16">
 
-  <main>
     <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero__inner">
-        <div class="hero__content fade-in">
-          <p class="hero__eyebrow">⚡ Azonnali duguláselhárítás Budapesten</p>
-<h1>
-  Duguláselhárítás Budapest <span class="hero__highlight">0–24</span><br>
-  WC, mosogató és lefolyó dugulás gyors megoldással.
-</h1>
-<p class="hero__text">
-  Eldugult a WC, a mosogató vagy a lefolyó Budapesten? Kispesten (XIX. kerület) és egész Budapest területén
-  <strong>0–24 duguláselhárítást</strong> vállalunk. Gépi duguláselhárítás, csőgörényes és kamerás vizsgálat,
-  átlátható árak, rejtett költségek nélkül.
-</p>
-
-          <div class="hero__actions">
-            <a href="tel:+36301234567" class="btn btn--primary">
-              <i class="fa-solid fa-phone"></i>
-              Azonnali hívás
+    <section id="hero" class="px-4 scroll-mt-24">
+      <div class="max-w-5xl mx-auto py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-teal-400">
+            Duguláselhárítás Budapesten és környékén – gyorsan, tisztán, 0–24
+          </h1>
+          <p class="text-base md:text-lg text-slate-300 mb-6">
+            Eldugult a WC, a mosogató vagy a csatorna? Mi
+            <span class="font-semibold text-slate-50">duguláselhárításra specializálódtunk</span>
+            : gyorsan érkezünk, tisztán dolgozunk, és <span class="font-semibold text-slate-50">előre egyeztetett
+             árakkal</span> számolunk.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 mb-4">
+            <a href="tel:+3612345678"
+               class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-teal-500 text-slate-950 font-semibold text-base md:text-lg shadow-lg shadow-teal-500/30 hover:bg-teal-400 transition">
+              📞 Azonnali hívás
             </a>
-            <a href="#kapcsolat" class="btn btn--ghost">
-              <i class="fa-regular fa-comment-dots"></i>
-              Visszahívás kérése
+            <a href="#ajanlat"
+               class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-slate-600 text-slate-100 font-medium hover:border-teal-400 hover:text-teal-300 transition">
+              ✉️ Online ajánlatkérés
             </a>
           </div>
-<div class="hero__badges">
-  <span>✅ Duguláselhárítás Budapest 0–24</span>
-  <span>🛠️ Gépi duguláselhárítás, csőgörény</span>
-  <span>📍 Kispest (XIX. kerület) és több budapesti kerület</span>
+          <p class="text-sm text-slate-400">
+            Átlagos kiszállási idő: <span class="text-teal-300 font-medium">60–90 perc</span> Budapest területén.
+            A legtöbb dugulást még aznap megszűntetjük.
+          </p>
+          <div class="mt-6 flex items-center gap-3 text-sm text-slate-400">
+            <span class="inline-flex items-center gap-1">
+              ⭐ <strong class="text-slate-50">4.9</strong> / 5 ügyfélértékelés
+            </span>
+            <span>•</span>
+            <span>1000+ sikeres duguláselhárítás Budapesten</span>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-4 bg-teal-500/10 blur-2xl rounded-3xl pointer-events-none"></div>
+          <div class="relative rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-6 md:p-8 shadow-2xl">
+            <h2 class="text-xl font-semibold mb-4 text-teal-300">
+              Budapesti duguláselhárítás, emberi hangon
+            </h2>
+            <ul class="space-y-3 text-sm md:text-base text-slate-200">
+              <li class="flex gap-3">
+                <span class="mt-1">⚡</span>
+                <span><strong>Gyors kiszállás</strong> Budapesten – a duguláselhárítás nem várhat napokat.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1">📦</span>
+                <span><strong>Előre egyeztetett duguláselhárítás árak</strong>, nincsenek rejtett tételek a számlán.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1">🧼</span>
+                <span><strong>Tiszta munkavégzés</strong>, WC duguláselhárításnál és mosogató duguláselhárításnál is rendet hagyunk magunk után.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1">💬</span>
+                <span><strong>Őszinte tanácsadás</strong>, hogyan előzheted meg a következő csatorna dugulást.</span>
+              </li>
+            </ul>
+            <p class="mt-5 text-xs text-slate-500">
+              WC duguláselhárítás, mosogató duguláselhárítás, fürdőszobai lefolyók, fővezetékes csatorna duguláselhárítás –
+              modern gépekkel, szükség esetén kamerás csővizsgálattal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SZOLGÁLTATÁSOK / USP -->
+    <section id="szolgaltatasok" class="px-4 border-y border-slate-800 bg-slate-900/40 scroll-mt-24">
+      <div class="max-w-5xl mx-auto py-10 md:py-14">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-slate-50">
+          Duguláselhárítás Budapesten 0–24 – mit jelent ez a gyakorlatban?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-2xl mb-2">🕒</div>
+            <h3 class="font-semibold mb-2 text-teal-300">0–24 ügyelet</h3>
+            <p class="text-sm text-slate-300">
+              Éjszaka dugult el a WC vagy reggel nem folyik le a víz? A
+              <strong>duguláselhárítás Budapest</strong> környékén nálunk tényleg éjjel-nappal elérhető.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-2xl mb-2">🔧</div>
+            <h3 class="font-semibold mb-2 text-teal-300">Professzionális eszközök</h3>
+            <p class="text-sm text-slate-300">
+              Nem csak „pumpálunk”. Elektromos spirál, woma, kamerás csatornavizsgálat – valódi
+              <strong>csatorna duguláselhárítás</strong> professzionális szinten.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-2xl mb-2">✅</div>
+            <h3 class="font-semibold mb-2 text-teal-300">Átlátható árak</h3>
+            <p class="text-sm text-slate-300">
+              A <strong>duguláselhárítás árak</strong> telefonon is irányt adnak: elmondjuk, milyen munkára és nagyságrendre
+              számíthatsz, hogy ne érjen meglepetés.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOLYAMAT -->
+    <section id="folyamat" class="px-4 scroll-mt-24">
+      <div class="max-w-5xl mx-auto py-12 md:py-16">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-slate-50">
+          Hogyan zajlik a duguláselhárítás?
+        </h2>
+        <p class="text-sm md:text-base text-slate-300 mb-8 max-w-2xl">
+          Amikor eldugul egy lefolyó, nincs idő hosszas szervezésre. A folyamatunk egyszerű:
+          felhívsz, átbeszéljük, kimegyünk, elvégezzük a duguláselhárítást – legyen szó WC dugulásról,
+          mosogatóról vagy csatorna dugulásról.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-xs uppercase tracking-wide text-slate-400 mb-1">1. lépés</div>
+            <h3 class="font-semibold mb-2 text-teal-300">Telefonos egyeztetés</h3>
+            <p class="text-sm text-slate-300">
+              Elmondod, hol laksz, mi dugult el (WC, mosogató, zuhany, csatorna),
+              és megbeszéljük az érkezési időt és az irányárat.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-xs uppercase tracking-wide text-slate-400 mb-1">2. lépés</div>
+            <h3 class="font-semibold mb-2 text-teal-300">Kiszállás & elhárítás</h3>
+            <p class="text-sm text-slate-300">
+              A helyszínen felmérjük a dugulás okát, szükség esetén csőgörénnyel vagy woma géppel elhárítjuk a problémát.
+              A vállalt munka <strong>Budapest</strong> területén legtöbbször 1–2 órán belül lezárul.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <div class="text-xs uppercase tracking-wide text-slate-400 mb-1">3. lépés</div>
+            <h3 class="font-semibold mb-2 text-teal-300">Garancia és tanácsadás</h3>
+            <p class="text-sm text-slate-300">
+              Tájékoztatunk a garanciáról és elmondjuk, mire figyelj, hogy ne alakuljon ki újabb dugulás.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SZOLGÁLTATÁSI TERÜLET -->
+    <section id="terulet" class="px-4 border-y border-slate-800 bg-slate-900/40 scroll-mt-24">
+      <div class="max-w-5xl mx-auto py-12 md:py-16">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-slate-50">
+          Duguláselhárítás Budapesten és környékén
+        </h2>
+        <p class="text-sm md:text-base text-slate-300 mb-6 max-w-3xl">
+          Főként <strong>Budapesten és közvetlen környékén</strong> dolgozunk. Ha 
+          <strong>gyors duguláselhárítást keresel </strong>, akkor jó helyen jársz.
+        </p>
+
+<div class="grid md:grid-cols-3 gap-4 text-sm text-slate-300">
+  <div>
+    <h3 class="collapsible-header font-semibold text-teal-300 mb-2 flex items-center justify-between cursor-pointer select-none">
+      <span>Pesti oldal</span>
+      <span class="indicator text-xs text-slate-400 ml-2">▾</span>
+    </h3>
+    <ul class="collapsible-content space-y-1 hidden">
+      <li>• Duguláselhárítás Budapest IV. kerület</li>
+      <li>• Duguláselhárítás Budapest V. kerület</li>
+      <li>• Duguláselhárítás Budapest VI. kerület</li>
+      <li>• Duguláselhárítás Budapest VII. kerület</li>
+      <li>• Duguláselhárítás Budapest VIII. kerület</li>
+      <li>• Duguláselhárítás Budapest IX. kerület</li>
+      <li>• Duguláselhárítás Budapest X. kerület</li>
+      <li>• Duguláselhárítás Budapest XIII. kerület</li>
+      <li>• Duguláselhárítás Budapest XIV. kerület</li>
+      <li>• Duguláselhárítás Budapest XV. kerület</li>
+      <li>• Duguláselhárítás Budapest XVI. kerület</li>
+      <li>• Duguláselhárítás Budapest XVII. kerület</li>
+      <li>• Duguláselhárítás Budapest XVIII. kerület</li>
+      <li>• Duguláselhárítás Budapest XIX. kerület</li>
+      <li>• Duguláselhárítás Budapest XX. kerület</li>
+      <li>• Duguláselhárítás Budapest XXI. kerület</li>
+      <li>• Duguláselhárítás Budapest XXIII. kerület</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="collapsible-header font-semibold text-teal-300 mb-2 flex items-center justify-between cursor-pointer select-none">
+      <span>Budai oldal</span>
+      <span class="indicator text-xs text-slate-400 ml-2">▾</span>
+    </h3>
+    <ul class="collapsible-content space-y-1 hidden">
+      <li>• Duguláselhárítás Budapest I. kerület</li>
+      <li>• Duguláselhárítás Budapest II. kerület</li>
+      <li>• Duguláselhárítás Budapest III. kerület</li>
+      <li>• Duguláselhárítás Budapest XI. kerület</li>
+      <li>• Duguláselhárítás Budapest XII. kerület</li>
+      <li>• Duguláselhárítás Budapest XXII. kerület</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="collapsible-header font-semibold text-teal-300 mb-2 flex items-center justify-between cursor-pointer select-none">
+      <span>További területek</span>
+      <span class="indicator text-xs text-slate-400 ml-2">▾</span>
+    </h3>
+    <ul class="collapsible-content space-y-1 hidden">
+      <li>Duguláselhárítás Alsónémedi</li>
+      <li>Duguláselhárítás Biatorbágy</li>
+      <li>Duguláselhárítás Budaörs</li>
+      <li>Duguláselhárítás Budajenő</li>
+      <li>Duguláselhárítás Budakalász</li>
+      <li>Duguláselhárítás Budakeszi</li>
+      <li>Duguláselhárítás Csobánka</li>
+      <li>Duguláselhárítás Csomád</li>
+      <li>Duguláselhárítás Csömör</li>
+      <li>Duguláselhárítás Csörög</li>
+      <li>Duguláselhárítás Délegyháza</li>
+      <li>Duguláselhárítás Diósd</li>
+      <li>Duguláselhárítás Dunabogdány</li>
+      <li>Duguláselhárítás Dunaharaszti</li>
+      <li>Duguláselhárítás Dunakeszi</li>
+      <li>Duguláselhárítás Dunavarsány</li>
+      <li>Duguláselhárítás Ecser</li>
+      <li>Duguláselhárítás Erdőkertes</li>
+      <li>Duguláselhárítás Érd</li>
+      <li>Duguláselhárítás Felsőpakony</li>
+      <li>Duguláselhárítás Fót</li>
+      <li>Duguláselhárítás Göd</li>
+      <li>Duguláselhárítás Gödöllő</li>
+      <li>Duguláselhárítás Gyál</li>
+      <li>Duguláselhárítás Gyömrő</li>
+      <li>Duguláselhárítás Halásztelek</li>
+      <li>Duguláselhárítás Herceghalom</li>
+      <li>Duguláselhárítás Isaszeg</li>
+      <li>Duguláselhárítás Kerepes</li>
+      <li>Duguláselhárítás Kistarcsa</li>
+      <li>Duguláselhárítás Kisoroszi</li>
+      <li>Duguláselhárítás Leányfalu</li>
+      <li>Duguláselhárítás Maglód</li>
+      <li>Duguláselhárítás Majosháza</li>
+      <li>Duguláselhárítás Mogyoród</li>
+      <li>Duguláselhárítás Nagykovácsi</li>
+      <li>Duguláselhárítás Nagytarcsa</li>
+      <li>Duguláselhárítás Ócsa</li>
+      <li>Duguláselhárítás Őrbottyán</li>
+      <li>Duguláselhárítás Páty</li>
+      <li>Duguláselhárítás Pécel</li>
+      <li>Duguláselhárítás Perbál</li>
+      <li>Duguláselhárítás Pilisborosjenő</li>
+      <li>Duguláselhárítás Piliscsaba</li>
+      <li>Duguláselhárítás Pilisjászfalu</li>
+      <li>Duguláselhárítás Pilisvörösvár</li>
+      <li>Duguláselhárítás Pilisszántó</li>
+      <li>Duguláselhárítás Pilisszentiván</li>
+      <li>Duguláselhárítás Pilisszentkereszt</li>
+      <li>Duguláselhárítás Pilisszentlászló</li>
+      <li>Duguláselhárítás Pócsmegyer</li>
+      <li>Duguláselhárítás Pomáz</li>
+      <li>Duguláselhárítás Pusztazámor</li>
+      <li>Duguláselhárítás Remeteszőlős</li>
+      <li>Duguláselhárítás Solymár</li>
+      <li>Duguláselhárítás Sóskút</li>
+      <li>Duguláselhárítás Szada</li>
+      <li>Duguláselhárítás Százhalombatta</li>
+      <li>Duguláselhárítás Szentendre</li>
+      <li>Duguláselhárítás Sződ</li>
+      <li>Duguláselhárítás Sződliget</li>
+      <li>Duguláselhárítás Szigethalom</li>
+      <li>Duguláselhárítás Szigetmonostor</li>
+      <li>Duguláselhárítás Szigetszentmiklós</li>
+      <li>Duguláselhárítás Taksony</li>
+      <li>Duguláselhárítás Tahitótfalu</li>
+      <li>Duguláselhárítás Telki</li>
+      <li>Duguláselhárítás Tinnye</li>
+      <li>Duguláselhárítás Tök</li>
+      <li>Duguláselhárítás Tököl</li>
+      <li>Duguláselhárítás Törökbálint</li>
+      <li>Duguláselhárítás Üllő</li>
+      <li>Duguláselhárítás Üröm</li>
+      <li>Duguláselhárítás Vác</li>
+      <li>Duguláselhárítás Vácrátót</li>
+      <li>Duguláselhárítás Vecsés</li>
+      <li>Duguláselhárítás Veresegyház</li>
+      <li>Duguláselhárítás Visegrád</li>
+      <li>Duguláselhárítás Zsámbék</li>
+    </ul>
+  </div>
 </div>
+
+
+      </div>
+    </section>
+
+    <!-- VÉLEMÉNYEK -->
+    <section id="velemenyek" class="px-4 scroll-mt-24">
+      <div class="max-w-5xl mx-auto py-12 md:py-16">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-slate-50">
+          Mit mondanak a ügyfeleink?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-200">
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <p class="mb-3">
+              „Éjfélkor dugult el a WC a XIX. kerületben, 1 órán belül itt voltak és megoldották.
+              A duguláselhárítás ára pont annyi lett, amennyit előre mondtak.”
+            </p>
+            <p class="text-xs text-slate-400">– Katalin, XIX. kerület</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <p class="mb-3">
+              „A mosogató folyamatosan visszaömlött a XI. kerületben, de tisztán és gyorsan dolgoztak,
+              nem kellett napokig szerelőre várni.”
+            </p>
+            <p class="text-xs text-slate-400">– Gábor, XI. kerület</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
+            <p class="mb-3">
+              „Sok helyen csak hitegettek, itt viszont egyenes kommunikációt és rendes duguláselhárítást kaptunk.
+              Ajánlom őket Budapesten bárkinek.”
+            </p>
+            <p class="text-xs text-slate-400">– Andrea, XIV. kerület</p>
+          </div>
         </div>
-        <div class="hero__visual fade-in delay-1">
-          <div class="hero__card hero__card--main">
-            <div class="hero__icon-circle">
-              <i class="fa-solid fa-wrench"></i>
+      </div>
+    </section>
+
+    <!-- AJÁNLATKÉRÉS -->
+<section id="ajanlat" class="px-4 border-t border-slate-800 bg-slate-900/40 scroll-mt-24">
+  <div class="max-w-5xl mx-auto py-12 md:py-16">
+    <div class="rounded-3xl border border-teal-500/60 bg-slate-950 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-start justify-between gap-8">
+      
+      <!-- Szöveg + telefon -->
+      <div class="w-full md:w-5/12 space-y-4">
+        <h2 class="text-2xl md:text-3xl font-semibold text-teal-300">
+          Sürgős duguláselhárítás?
+        </h2>
+        <p class="text-sm md:text-base text-slate-300">
+          Hívd a szerelőt telefonon, vagy küldd el röviden az adataidat, és
+          <span class="font-semibold text-slate-50">visszahívunk a lehető leghamarabb</span>.
+          Minél pontosabban megadod a helyszínt (kerület / település), annál gyorsabban tudunk segíteni.
+        </p>
+        <p class="text-xs text-slate-500">
+          Akkor is érdemes jelezni, ha „csak” lassan folyik le a víz – a duguláselhárítás Budapest területén
+          sokszor olcsóbb, ha időben szólsz.
+        </p>
+
+        <div class="flex flex-col gap-3 pt-2">
+          <a href="tel:+3612345678"
+             class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-teal-500 text-slate-950 font-semibold text-base shadow-lg shadow-teal-500/30 hover:bg-teal-400 transition">
+            📞 Hívás: +36 1 234 5678
+          </a>
+        </div>
+      </div>
+
+      <!-- Web3Forms űrlap -->
+      <div class="w-full md:w-7/12">
+        <form id="contactForm" class="space-y-3 text-sm">
+          <!-- Web3Forms kötelező mezők -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="Új duguláselhárítás megkeresés – Dugulás Segély">
+          <input type="hidden" name="from_name" value="Dugulás Segély landing">
+          <div>
+            <label for="name" class="block mb-1 text-slate-200">Név <span class="text-teal-400">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder="Pl.: Kovács Péter"
+              required
+            >
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label for="phone" class="block mb-1 text-slate-200">Telefonszám <span class="text-teal-400">*</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder="+36…"
+                required
+              >
             </div>
-            <h2>Épp úton a szerelő 🚐</h2>
-            <p>Átlagos kiszállási idő: <strong>&lt; 60 perc</strong> Budapest területén.</p>
+            <div>
+              <label for="area" class="block mb-1 text-slate-200">Kerület / település <span class="text-teal-400">*</span></label>
+              <input
+                type="text"
+                id="area"
+                name="area"
+                class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                placeholder="Pl.: XIX. kerület vagy Dunakeszi"
+                required
+              >
+            </div>
           </div>
-          <div class="hero__card hero__card--secondary floating">
-            <span class="hero__pill">💡 Tipp</span>
-            <p>Ne használj több vegyszert – sokszor ront a helyzeten. Inkább hívd a profikat.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SZOLGÁLTATÁSOK -->
-    <section class="section" id="szolgaltatasok">
-      <div class="section__header fade-in">
-        <h2>Mit oldunk meg helyetted? 🔧</h2>
-        <p>Egycsapásra megszüntetjük a leggyakoribb dugulásokat otthonodban vagy irodádban.</p>
-      </div>
-      <div class="cards cards--grid">
-        <article class="card fade-in">
-          <div class="card__icon">🚿</div>
-          <h3>Fürdőszobai dugulás</h3>
-          <p>Zuhany, mosdó, kád, padlóösszefolyó – haj, szappanmaradék, vízkő? Megoldjuk.</p>
-        </article>
-        <article class="card fade-in delay-1">
-          <div class="card__icon">🍽️</div>
-          <h3>Mosogató dugulás</h3>
-          <p>Zsíros, olajos lerakódások, ételmaradékok – szakszerű tisztítás bontás nélkül.</p>
-        </article>
-        <article class="card fade-in delay-2">
-          <div class="card__icon">🚽</div>
-          <h3>WC és fővezeték</h3>
-          <p>Komolyabb dugulásnál csőgörénnyel és kamerás vizsgálattal dolgozunk.</p>
-        </article>
-        <article class="card fade-in delay-3">
-          <div class="card__icon">🏢</div>
-          <h3>Társasház & üzlet</h3>
-          <p>Időszakos karbantartás, visszatérő problémák feltárása, hosszú távú megoldások.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- MIÉRT MI -->
-    <section class="section section--accent" id="miert-mi">
-      <div class="section__header fade-in">
-        <h2>Miért a dugulas-segely.hu? ⭐</h2>
-        <p>Néhány ok, amiért ügyfeleink bátran ránk bízzák otthonukat.</p>
-      </div>
-      <div class="grid grid--two fade-in">
-<ul class="list">
-  <li>
-    <h3>Gyors kiszállás <span class="list__icon">⏱️</span></h3>
-    <p>Budapesten és vonzáskörzetében rövid határidővel érkezünk.</p>
-  </li>
-  <li>
-    <h3>Átlátható árak <span class="list__icon">📄</span></h3>
-    <p>Nincsenek rejtett költségek, kiszállás előtt tájékoztatunk a várható díjról.</p>
-  </li>
-  <li>
-    <h3>Modern eszközök <span class="list__icon">🧰</span></h3>
-    <p>Professzionális gépekkel dolgozunk, felesleges bontás nélkül, ha megoldható.</p>
-  </li>
-  <li>
-    <h3>Garanciális munka <span class="list__icon">🤝</span></h3>
-    <p>Elvégzett munkánkra garanciát vállalunk – a minőség alap.</p>
-  </li>
-</ul>
-
-        <div class="highlight-box">
-          <h3>👉 Mit tegyél, amíg megérkezünk?</h3>
-          <ul>
-            <li>Ne önts újabb vegyszert a lefolyóba.</li>
-            <li>Ha kifolyik a víz, zárd el, és tegyél le törölközőt.</li>
-            <li>Ne próbáld erővel „áttolni” a dugulást – nagyobb kárt okozhat.</li>
-          </ul>
-          <a href="tel:+36301234567" class="btn btn--full">
-            Segítséget kérek most 🚨
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOGYAN DOLGOZUNK -->
-    <section class="section" id="folyamat">
-      <div class="section__header fade-in">
-        <h2>Így zajlik a duguláselhárítás 🧩</h2>
-        <p>Egyszerű, átlátható lépések – felesleges körök nélkül.</p>
-      </div>
-      <ol class="steps fade-in">
-        <li>
-          <span class="steps__badge">1</span>
           <div>
-            <h3>Kapcsolatfelvétel</h3>
-            <p>Telefonon vagy az űrlapon jelzed a problémát, pár kérdést teszünk fel.</p>
+            <label for="message" class="block mb-1 text-slate-200">Írj röviden a problémáról</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              class="w-full rounded-lg border border-slate-700 bg-slate-900/70 px-3 py-2 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              placeholder="Pl.: WC teljesen eldugult, szennyvíz visszajön, panellakás 3. emelet..."
+            ></textarea>
           </div>
-        </li>
-        <li>
-          <span class="steps__badge">2</span>
-          <div>
-            <h3>Előzetes árajánlat</h3>
-            <p>Már a hívás során kapsz egy várható árintervallumot, meglepetések nélkül.</p>
+
+          <div class="flex items-center justify-between gap-3 pt-1">
+            <button
+              id="submitBtn"
+              type="submit"
+              class="inline-flex items-center justify-center px-4 py-2.5 rounded-full bg-teal-500 text-slate-950 font-semibold text-sm shadow-md shadow-teal-500/30 hover:bg-teal-400 disabled:opacity-60 disabled:cursor-not-allowed transition"
+            >
+              Elküldés
+            </button>
+            <p id="formSuccess" class="text-xs min-h-[1.25rem] text-slate-400 text-right flex-1">
+            </p>
           </div>
-        </li>
-        <li>
-          <span class="steps__badge">3</span>
-          <div>
-            <h3>Kiszállás és elhárítás</h3>
-            <p>Profi eszközökkel megszüntetjük a dugulást, szükség esetén kamerás vizsgálat is lehetséges.</p>
-          </div>
-        </li>
-        <li>
-          <span class="steps__badge">4</span>
-          <div>
-            <h3>Tanácsadás & garancia</h3>
-            <p>Megmutatjuk, hogyan előzd meg a visszatérő dugulásokat, és garanciát adunk munkánkra.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
 
-    <!-- GYIK -->
-    <section class="section section--muted" id="gyik">
-      <div class="section__header fade-in">
-        <h2>Gyakori kérdések ❓</h2>
+          <p class="text-[11px] text-slate-500">
+            Az űrlap elküldésével hozzájárulsz, hogy a megadott adatok alapján felvegyük veled a kapcsolatot.
+          </p>
+        </form>
       </div>
-      <div class="faq fade-in">
-        <details>
-          <summary>Milyen gyorsan tudtok kijönni? ⏱️</summary>
-          <p>Budapesten belül jellemzően 1–3 órán belül ki tudunk szállni, de sürgős esetben ennél is hamarabb próbálunk érkezni.</p>
-        </details>
-        <details>
-          <summary>Előre meg tudjátok mondani az árat? 💸</summary>
-          <p>Telefonon nagy pontossággal meg tudunk adni egy várható árintervallumot. A pontos ár a helyszíni felmérés után derül ki.</p>
-        </details>
-        <details>
-          <summary>Használtok vegyszert? 🧪</summary>
-          <p>Elsősorban gépi tisztítással dolgozunk. Vegyszert csak indokolt esetben használunk, körültekintően.</p>
-        </details>
-        <details>
-          <summary>Vállaltok éjszakai kiszállást is? 🌙</summary>
-          <p>Igen, sürgős esetben 0–24 elérhetők vagyunk – az éjszakai kiszállásnak külön díja lehet, erről előre tájékoztatunk.</p>
-        </details>
-        <details>
-  <summary>Mennyibe kerül a duguláselhárítás Budapesten? 💰</summary>
-  <p>
-    A duguláselhárítás ára Budapesten több tényezőtől függ: a dugulás helye (WC, mosogató, lefolyó),
-    a csővezeték állapota, illetve hogy szükséges-e gépi vagy kamerás tisztítás.
-    A pontos árakat minden esetben a telefonos egyeztetés során adjuk meg, teljesen átláthatóan.
-  </p>
-  <p>
-    Kérésre előzetes árbecslést adunk – rejtett költségek nélkül.
-  </p>
-</details>
-
-<details>
-  <summary>Duguláselhárítás házilag – mit érdemes kipróbálni? 🧪</summary>
-  <p>
-    Kisebb mosogató- vagy lefolyó dugulásnál próbálható: forró víz, pumpa, szódabikarbóna + ecet,
-    illetve a lefolyó tisztító dugó eltávolítása. 
-  </p>
-  <p>
-    Kerülendő: túl sok vegyszer használata, ami a lerakódást összeállíthatja és rontja a helyzetet.
-    Ha a WC dugult el, vagy a víz visszafolyik, inkább szakembert hívj – ezek könnyen komolyabb gondot okozhatnak.
-  </p>
-</details>
-
-<details>
-  <summary>Vállaltok duguláselhárítást éjjel-nappal (0–24)? 🌙</summary>
-  <p>
-    Igen, Budapesten <strong>0–24 sürgősségi duguláselhárítást</strong> biztosítunk.
-    WC dugulás, mosogató dugulás, csatorna elzáródás esetén azonnal indulunk,
-    a legtöbb esetben egy órán belül a helyszínen vagyunk.
-  </p>
-</details>
-
-<details>
-  <summary>Mikor kell feltétlenül szakembert hívni? 🚨</summary>
-  <p>
-    Ha a víz visszafolyik, eldugult a WC és nem húzza le, a padlóösszefolyón keresztül tör fel a víz,
-    vagy a mosogató rendszeresen eldugul, akkor már gépi duguláselhárítás szükséges.
-  </p>
-  <p>
-    Ilyenkor a házi módszerek csak rontanak – a csőgörényes vagy kamerás diagnosztika viszont gyors és tiszta megoldás.
-  </p>
-</details>
-
-<details>
-  <summary>Mely budapesti kerületekben dolgoztok? 📍</summary>
-  <p>
-    Kiemelten: <strong>XIX. kerület (Kispest)</strong>, de egész Budapesten vállalunk duguláselhárítást:
-    XI., XIII., XVII., XVIII., XX., X. kerület, IX. kerület, III. kerület és további területek.
-  </p>
-  <p>
-    Ha sürgős eset van, azonnal jelezzük, hogy mikor érünk oda – legtöbbször 1 órán belül.
-  </p>
-</details>
-
-<details>
-  <summary>Mi a különbség a gépi és a hagyományos duguláselhárítás között? 🧰</summary>
-  <p>
-    A gépi duguláselhárítás csőgörényes vagy magasnyomású tisztítással történik,
-    amely sokkal hatékonyabb, mint a pumpa vagy a kézi eszközök.
-  </p>
-  <p>
-    Mély, makacs vagy rendszeresen visszatérő dugulásnál ez az egyetlen biztos megoldás.
-    Szükség esetén kamerás vizsgálattal felmérjük a cső belső állapotát is.
-  </p>
-</details>
-
-<details>
-  <summary>WC duguláselhárítást is vállaltok? 🚽</summary>
-  <p>
-    Igen, a WC dugulás a leggyakoribb hívásaink egyike. A WC kagyló, lefolyó, fővezeték
-    dugulásait bontás nélkül szüntetjük meg, szükség esetén kamerás vizsgálattal.
-  </p>
-</details>
-
-<details>
-  <summary>Mosogató duguláselhárítást is vállaltok? 🍽️</summary>
-  <p>
-    Igen, a mosogató és konyhai lefolyó dugulás tipikusan zsíros lerakódás miatt alakul ki.
-    Gépi tisztítással gyorsan helyrehozható – 10–20 perces munkával.
-  </p>
-</details>
-
-<details>
-  <summary>Mennyi idő alatt értek ki Budapesten? ⏱️</summary>
-  <p>
-    Budapest legtöbb kerületébe <strong>átlagosan 30–60 percen belül</strong> kiérünk.
-    A közeli kerületekbe (XI., XIX., XVIII., XX.) még gyorsabban.
-  </p>
-</details>
-
-      </div>
-    </section>
-
-    <!-- KAPCSOLAT -->
-    <section class="section" id="kapcsolat">
-      <div class="section__header fade-in">
-        <h2>Kérj visszahívást 📞</h2>
-        <p>Írd meg, hol akadt el a víz, és röviden a problémát – hamarosan keresünk.</p>
-      </div>
-      <div class="contact fade-in">
-<form class="form" id="contactForm" method="POST" action="https://api.web3forms.com/submit">
-
-  <!-- Web3Forms access key -->
-  <input type="hidden" name="access_key" value="2914e4e1-6305-4499-9a09-263b967a638b">
-
-  <!-- Email subject -->
-  <input type="hidden" name="subject" value="Új visszahívás kérés – dugulas-segely.hu">
-
-  <!-- Web3Forms honeypot -->
-  <input type="checkbox" name="botcheck" class="hp-field" style="display:none">
-
-  <div class="form__group">
-    <label for="name">Név *</label>
-    <input type="text" id="name" name="name" required minlength="3" placeholder="Teljes neved">
-  </div>
-
-  <div class="form__group">
-    <label for="phone">Telefonszám *</label>
-    <input type="tel" id="phone" name="phone" required placeholder="+36...">
-  </div>
-
-  <div class="form__group">
-    <label for="area">Település / kerület *</label>
-    <input type="text" id="area" name="area" required placeholder="Pl. Budapest XI.">
-  </div>
-
-  <div class="form__group">
-    <label for="message">Röviden a probléma</label>
-    <textarea id="message" name="message" rows="3" placeholder="Pl. eldugult a mosogató..."></textarea>
-  </div>
-
-  <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
-    Elküldés ✉️
-  </button>
-
-  <p class="form__note">Az adataidat kizárólag a visszahíváshoz használjuk, nem adjuk át harmadik félnek.</p>
-  <p class="form__success" id="formSuccess" aria-live="polite"></p>
-</form>
-        <div class="contact__info">
-          <h3>Vagy hívj most 🚨</h3>
-          <a class="contact__phone" href="tel:+36301234567">
-            <i class="fa-solid fa-phone"></i> +36 30 123 4567
-          </a>
-          <p>Elérhető: <strong>0–24</strong> sürgős duguláselhárítás esetén.</p>
-          <p class="contact__small">Szolgáltatási terület: Budapest és 30 km-es vonzáskörzete.</p>
-        </div>
-      </div>
-    </section>
-    <section class="section section--muted" id="szolgaltatasi-terulet">
-  <div class="section__header fade-in">
-    <h2>Duguláselhárítás Budapest több kerületében</h2>
-    <p>Elsősorban Kispesten (XIX. kerület) dolgozunk, de számos budapesti kerületben vállalunk duguláselhárítást.</p>
-  </div>
-
-  <div class="service-areas fade-in">
-    <div class="service-areas__group">
-      <h3>Kiemelt terület: XIX. kerület – Kispest</h3>
-      <p>
-        Gyors, 0–24 duguláselhárítás Kispesten, a <strong>Budapest XIX. kerület</strong> teljes területén.
-        WC duguláselhárítás, mosogató duguláselhárítás, lefolyó- és csatorna duguláselhárítás háztartásoknak és üzleteknek.
-      </p>
-    </div>
-
-    <div class="service-areas__group">
-      <h3>Duguláselhárítás Budapest más kerületeiben</h3>
-      <ul>
-        <li><span>Duguláselhárítás Budapest XI. kerület</span></li>
-        <li><span>Duguláselhárítás Budapest XIII. kerület</span></li>
-        <li><span>Duguláselhárítás Budapest XVII. kerület</span></li>
-        <li><span>Duguláselhárítás Budapest XVIII. kerület</span></li>
-        <li><span>Duguláselhárítás Budapest XX. kerület</span></li>
-        <li><span>Duguláselhárítás Kőbánya (X. kerület)</span></li>
-        <li><span>Duguláselhárítás Budapest IX. kerület</span></li>
-        <li><span>Duguláselhárítás Óbuda (III. kerület)</span></li>
-      </ul>
-      <p class="service-areas__note">
-        Ha nem látod a saját kerületed a listában, akkor is nagy eséllyel tudunk segíteni – 
-        kérj telefonon gyors visszajelzést a kiszállásról és az árakról.
-      </p>
     </div>
   </div>
 </section>
 
+
   </main>
 
-  <footer class="footer">
-    <div class="footer__inner">
-<p>© <span id="year"></span> dugulas-segely.hu – Duguláselhárítás Budapest 0–24.</p>
-      <a href="#top" class="footer__top-link">Vissza az elejére ⬆️</a>
+  <!-- LÁBLÉC -->
+  <footer class="px-4 border-t border-slate-800 bg-slate-950">
+    <div class="max-w-5xl mx-auto py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+      <div>© <span id="year"></span> dugulas-segely.hu – Dugulaselharitas 0-24</div>
+      <div class="flex gap-3">
+        <a href="#" class="hover:text-teal-300">Adatkezelés</a>
+        <a href="#" class="hover:text-teal-300">ÁSZF</a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Saját JS -->
+  <script src="main.js" defer></script>
 </body>
 </html>
